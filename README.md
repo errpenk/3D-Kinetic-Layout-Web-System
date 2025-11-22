@@ -1,4 +1,4 @@
-# 3D-Kinetic-Layout-Web-System
+# 3D-Web-Project
 
 This project transforms the classic Swiss style—grid discipline,modularity and structural clarity—into an interactive digital environment. The interface is built around a 3D scene, draggable geometric forms, and smooth morphing transitions that turn static layout rules into dynamic behaviors. It explores how a visual system can behave, react, and communicate when translated into motion and interaction.
 The most important point is, this project is a "vanilla" implementation: achieves motion graphics and 3D effects without using WebGL libraries (like Three.js) or animation libraries (like GSAP). By using CSS 3D (DOM-based 3D), this project achieves a high-performance, easy-implement, and low-dependency web approach.
