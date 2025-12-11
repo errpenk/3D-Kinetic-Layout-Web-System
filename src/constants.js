@@ -1,4 +1,5 @@
 // --- CONSTANTS ---
+
 export const DOM_IDS = {
     CURSOR: 'cursor',
     SCENE: 'scene',
