@@ -1,0 +1,18 @@
+/*
+
+// 统一管理所有关键帧
+@mixin animate($name, $duration: 0.6s, $delay: 0s, $easing: $ease-out-expo) {
+  animation: $name $duration $easing $delay forwards;
+}
+
+@keyframes text-explode {
+  0% { letter-spacing: -0.06em; }
+  50% { letter-spacing: 0.5em; opacity: 0; }
+  100% { letter-spacing: -0.06em; opacity: 1; }
+}
+
+@keyframes morph-bg {
+  // ... 
+}
+
+*/
