@@ -1,0 +1,17 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin mono-text {
+  font-family: $font-mono;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@mixin full-screen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
