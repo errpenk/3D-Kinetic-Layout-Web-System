@@ -1,0 +1,77 @@
+@use '../abstract/variables' as *;
+@use '../abstract/mixins' as *;
+
+.hero {
+  height: 100vh; width: 100%; display: flex; align-items: center; justify-content: center;
+  perspective: 1500px; overflow: hidden; position: relative;
+  
+  &.modified {
+    .deco-matrix { opacity: 0.2; background-image: radial-gradient($swiss-blue 1px, transparent 1px); }
+    .deco-year { color: $swiss-yellow; opacity: 0.2; transform: translateX(-20px); }
+    .deco-plus { color: $swiss-red; transform: rotate(90deg); opacity: 0.8; }
+    .line-1 { top: 15%; background: $swiss-red; opacity: 0.6; }
+    .line-2 { right: 15%; background: $swiss-blue; opacity: 0.6; }
+    .line-3 { top: 85%; width: 100%; background: $swiss-yellow; opacity: 0.6; }
+  }
+}
+
+.scene {
+  position: relative; width: 600px; height: 600px;
+  transform-style: preserve-3d; transition: transform 0.1s linear; z-index: 10;
+}
+
+.draggable {
+  position: absolute; top: 50%; left: 50%;
+  --tx: -50%; --ty: -50%; --tz: 0px; --rotX: 0deg; --rotY: 0deg;
+  transform: translate(var(--tx), var(--ty)) translateZ(var(--tz));
+  transition: box-shadow 0.3s, background-color 0.6s, border-color 0.6s, color 0.6s;
+  
+  &.smooth-reset {
+    transition: transform 0.8s $ease-swiss, background-color 0.8s, border-color 0.8s;
+  }
+}
+
+// Background Decos
+.bg-deco { position: absolute; pointer-events: none; transition: all 0.8s $ease-swiss; }
+.deco-matrix { top:0; left:0; width:100%; height:100%; background: radial-gradient($ink 1px, transparent 1px); background-size: 40px 40px; opacity: 0.15; }
+.deco-year { right: -2vw; bottom: 0; font-size: 30vw; font-weight: 900; opacity: 0.1; line-height: 0.7; letter-spacing: -0.05em; }
+.deco-plus { font-size: 2rem; opacity: 0.5; }
+.plus-tl { top:15%; left:10%; } .plus-tr { top:15%; right:10%; } .plus-bl { top:80%; left:20%; } .plus-br { bottom:15%; right:10%; }
+.deco-line { background: $ink; opacity: 0.3; height: 1px; width: 100%; }
+.line-1 { top:33%; } .line-2 { width:1px; height:100%; top:0; right:33%; } .line-3 { top:66%; width:50%; }
+
+// Geometry Items
+.geo-circle { width: 550px; height: 550px; border: 1px solid $ink; border-radius: 50%; opacity: 0.8; }
+.geo-square { 
+  width: 320px; height: 420px; background: $ink; display: flex; flex-direction: column; justify-content: space-between; padding: 2rem;
+  .op-50 { color: #fff; opacity: 0.5; }
+  .square-footer { border-top: 1px solid #555; padding-top: 1rem; }
+  .red-text { color: $swiss-red; }
+}
+.wireframe-box { width: 180px; height: 180px; border: 1px solid $swiss-red; transform: translate(var(--tx), var(--ty)) translateZ(var(--tz)) rotateY(var(--rotY, 45deg)) rotateX(var(--rotX, 0deg)); }
+.geo-accent { width: 240px; height: 240px; background: $swiss-blue; mix-blend-mode: multiply; }
+.geo-text { color: $paper; -webkit-text-stroke: 1px $ink; white-space: nowrap; pointer-events: auto; mix-blend-mode: normal; }
+
+// Effects
+.effect-ripple { animation: rippleEffect 0.6s ease-out; }
+.effect-flip { animation: flipEffect 0.6s ease forwards; }
+.effect-spin { animation: spinViolent 0.5s linear; }
+.effect-morph { animation: morphEffect 0.6s ease forwards; }
+.effect-spacing { animation: textExplode 0.5s ease-out; }
+
+@keyframes rippleEffect { 50% { transform: translate(var(--tx), var(--ty)) translateZ(var(--tz)) scale(1.2); border-width: 10px; opacity: 0; } }
+@keyframes flipEffect { 100% { transform: translate(var(--tx), var(--ty)) translateZ(var(--tz)) rotateY(180deg); background-color: $ink; } }
+@keyframes spinViolent { 100% { transform: translate(var(--tx), var(--ty)) translateZ(var(--tz)) rotateY(45deg) rotateZ(360deg); } }
+@keyframes morphEffect { 100% { transform: translate(var(--tx), var(--ty)) translateZ(var(--tz)) rotate(90deg); border-radius: 50%; background-color: $swiss-yellow; mix-blend-mode: normal; } }
+@keyframes textExplode { 50% { letter-spacing: 0.5em; opacity: 0; } }
+
+.scroll-arrow {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 200; animation: bounce 2s infinite; padding: 20px;
+  svg { width: 40px; stroke: $ink; fill: none; stroke-width: 2; }
+}
+.reset-btn {
+  position: absolute; bottom: 2rem; right: 2rem; border: 1px solid $ink; background: $paper; padding: 0.5rem 1rem;
+  font-family: $font-mono; font-size: 0.8rem; z-index: 200; text-transform: uppercase; font-weight: 700; transition: 0.2s;
+  &:hover { background: $swiss-red; color: white; border-color: $swiss-red; }
+}
+@keyframes bounce { 0%,100% {transform:translate(-50%,0);} 50% {transform:translate(-50%,-10px);} }
