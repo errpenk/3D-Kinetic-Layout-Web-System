@@ -1,3 +1,6 @@
+/*
+
+
 import { DOM_IDS, CLASSES, COLOR_MAP } from './constants.js';
 import { startDrag, resetScene, isSceneDragging } from './drag.js';
 import { expandItem, goBack } from './navigation.js';
@@ -65,3 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Global Back Button
     document.getElementById(DOM_IDS.GLOBAL_BACK_BTN).addEventListener('click', goBack);
 });
+
+
+*/
