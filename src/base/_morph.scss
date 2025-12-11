@@ -1,0 +1,19 @@
+@use '../abstract/variables' as *;
+
+#morph-layer {
+  position: fixed; z-index: 500; background: $paper; pointer-events: none; display: none;
+  transition: top 0.6s cubic-bezier(0.83, 0, 0.17, 1),
+              left 0.6s cubic-bezier(0.83, 0, 0.17, 1),
+              width 0.6s cubic-bezier(0.83, 0, 0.17, 1),
+              height 0.6s cubic-bezier(0.83, 0, 0.17, 1),
+              background-color 0.6s ease;
+}
+
+#cursor {
+  width: 20px; height: 20px; border: 1px solid $swiss-red;
+  position: fixed; border-radius: 50%; z-index: 10000;
+  pointer-events: none; transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s; mix-blend-mode: difference;
+  
+  &.active { width: 10px; height: 10px; background: $swiss-red; }
+}
