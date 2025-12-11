@@ -4,46 +4,58 @@ This project transforms the classic Swiss style—grid discipline,modularity and
 Also this project is a "vanilla" implementation: achieves motion graphics and 3D effects without using WebGL libraries (like Three.js) or animation libraries (like GSAP). By using CSS 3D (DOM-based 3D), this project achieves a high-performance, easy-implement, and low-dependency web approach.
 
 
-A. Design Features
-1. Spatial Interaction
-   3D scene controlled by mouse movement.
-   Draggable geometric elements.
-   Real-time rotations and transformations during interaction.
-   Click-triggered kinetic effects.
-
-2. Grid-Based Visual Architecture
-   Structural backdrop
-   Grid logic informs spatial organization, alignment, rhythm
-   Background elements
-
-3. Dynamic Pages
-   Each subpage uses unique animations such as typing, blur-entry, slide-up, velocity skew, or collapse during exit.
 
 
 
-B. Design Principles
-1. Structure over decoration
-   The project treats grids, geometry, and typographic rules as the primary design material. Decoration emerges only from system logic.
-
-2. Digital space
-   Instead of flat layout, the design introduces:
-     3D depth
-     Interaction physics
-     Time-based motion
-     Morphing transformations
+# NEO-SWISS | Kinetic Lab
 
 
+> **Deconstruct. Synthesize. Build.**
+> An interactive exploration of International Typographic Style (Swiss Style) fused with modern web kinetics.
 
-C. Key Technical Architecture
-1. CSS 3D Transform
-   Elements use:
-     Perspective,transform-style: preserve-3d and translateZ & rotate
-     Mouse-based scene rotation
-     Dynamic transforms during drag events
+[![Vite](https://img.shields.io/badge/Vite-5.0-646CFF?style=flat&logo=vite)](https://vitejs.dev/)
+[![Sass](https://img.shields.io/badge/Sass-1.70-CC6699?style=flat&logo=sass)](https://sass-lang.com/)
+[![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 
-2. Drag Interaction Layer
-   The drag engine handles:
-     pointer tracking
-     movement deltas
-     depth-aware positioning
-     rotation behavior for specific elements
+## ✦ Concept
+
+**Neo-Swiss** is a digital interaction arts work that reimagines the rigid grids and objective clarity of Swiss Design through the lens of modern frontend interactivity.
+
+It moves beyond static layouts to introduce **Time** and **Motion** as the fourth dimension of design. The project demonstrates advanced DOM manipulation, 3D CSS transforms, and state-driven page transitions without relying on heavy WebGL libraries like Three.js.
+
+##  Key Features
+
+*   **Interactive 3D Scene:** Custom-built parallax engine and drag-and-drop physics using vanilla JS and CSS Variables.
+*   **Kinetic Typography:** Type that reacts to user input, velocity, and screen position.
+*   **Seamless Transitions:** A custom `Router` class handling complex FLIP-like morphing animations between grid items and subpages.
+*   **Modular Architecture:** Component-based file structure using SCSS modules and ES6 classes.
+*   **Swiss Design System:** Strict adherence to a 12-column grid, typographic hierarchy, and limited color palette.
+
+##  Design System
+
+The visual language is strictly defined in `src/styles/abstract/_variables.scss`, adhering to the principles of International Typographic Style:
+
+*   **Typography:** `Inter` for structural elements & `JetBrains Mono` for data/code blocks.
+*   **Color Palette:**
+    *   🔴 **Swiss Red** `(#FF2400)`: Emphasis & Action.
+    *   🔵 **International Blue** `(#0033CC)`: Synthesis & Depth.
+    *   🟡 **Signal Yellow** `(#FFD700)`: Highlights.
+    *   ⚫ **Ink** `(#080808)` & ⚪ **Paper** `(#F2F2F2)`: High-contrast foundation.
+*   **Motion:** A custom cubic-bezier easing `(0.16, 1, 0.3, 1)` is used globally to mimic the weight and friction of physical objects.
+
+##  Engineering Highlights
+
+###  The Morph Transition
+The page transition is orchestrated by the `Router` class. Instead of simple opacity fades, it performs a complex FLIP-like animation:
+1.  Captures the **bounding box** of the clicked element via `getBoundingClientRect`.
+2.  Creates a temporary "Morph Layer" at those exact coordinates.
+3.  Expands it to fullscreen using **hardware-accelerated CSS transforms**.
+This ensures a seamless visual continuity at 60fps without layout thrashing.
+
+###  Logic-less DOM
+The HTML structure remains pure and semantic. All interaction logic (drag physics, hover states, routing) is attached dynamically via JavaScript modules (`Draggable.js`, `Navigation.js`), strictly adhering to the principle of **Separation of Concerns**.
+
+
+##  License
+
+This project is open source and available under the [MIT License](LICENSE).
