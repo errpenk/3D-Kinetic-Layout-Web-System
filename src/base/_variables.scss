@@ -1,0 +1,14 @@
+// Palette - Swiss Style
+$color-paper: #F2F2F2;
+$color-ink: #080808;
+$color-swiss-red: #FF2400;
+$color-swiss-blue: #0033CC;
+$color-swiss-yellow: #FFD700;
+
+// Grid & Layout
+$grid-unit: 8px;
+$container-width: 1400px;
+
+// Easing - The "Signature" feel
+$ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+$ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
